@@ -1,0 +1,38 @@
+#include <stdio.h>
+/* Write a function that prints the elements after k iterations
+   of selection sort
+*/
+void printSelectSortIter(int arr[], int n, int k)
+{
+  int min,i,j,m=1;
+  for(i=1;i<=k;i++)
+  {
+    min=m-1;
+   for(j=m;j<n;j++)
+   {
+     if(arr[j]<=arr[min])
+       min=j;
+   }
+    
+    arr[i-1]=arr[i-1]+arr[min];
+    arr[min]=arr[i-1]-arr[min];
+    arr[i-1]=arr[i-1]-arr[min];
+    m++;
+}
+  for(i=0;i<n;i++)
+  {
+    if(i!=(n-1))
+      printf("%d ",arr[i]);
+    else
+       printf("%d",arr[i]);
+}
+}
+int main() {
+    int arr[101], n, k, i;
+    scanf("%d", &n); //taking n from user
+    scanf("%d", &k);	//taking k from user
+    for (i = 0; i < n; i++)
+        scanf("%d", &arr[i]);	//scanning elements
+    printSelectSortIter(arr,n,k);
+	return 0;
+}
